@@ -24,7 +24,7 @@ INSERT INTO BusLine (LineName, FinalDestination) VALUES
 ('Great Lift', 'Thunder Bluff');
 
 -- BusRide Data
-INSERT INTO BusRide (RideDate, StartTime, Duration, StartGPS, EndGPS, Passanger_ID, Line_FinalDestination, Line_Name) VALUES
+INSERT INTO BusRide (RideDate, StartTime, Duration, StartGPS, EndGPS, Passenger_ID, Line_FinalDestination, Line_Name) VALUES
 ('2024-11-01', '08:00:00', '02:00:00', '51.50', '34.05', 1, 'Orgrimmar', 'Horde Express'),
 ('2024-11-01', '10:30:00', '01:30:00', '34.05', '51.50', 1, 'Stormwind', 'Alliance Express'),
 ('2024-11-02', '09:00:00', '01:30:00', '40.71', '51.50', 2, 'Stormwind', 'Alliance Express'),
@@ -45,7 +45,7 @@ INSERT INTO BusRide (RideDate, StartTime, Duration, StartGPS, EndGPS, Passanger_
 ('2024-11-09', '13:00:00', '02:15:00', '40.71', '48.85', 4, 'Darnassus', 'Elven Path'),
 ('2024-11-10', '11:00:00', '01:00:00', '35.68', '48.85', 5, 'Darnassus', 'Elven Path'),
 ('2024-11-10', '12:30:00', '01:00:00', '48.85', '35.68', 5, 'Thunder Bluff', 'Great Lift'),
-('2024-11-11', '08:00:00', '01:30:00', '51.50', '34.05', 1, 'Orgrimmar', 'Horde Express'),
+('2024-11-11', '08:00:00', '01:30:00', '51.50', '34.05', 1, 'Orgrimmar', 'Horde Express');
 -- Serves Data
 INSERT INTO Serves (StopNr, Stop_GPS, Line_FinalDestination, Line_Name) VALUES
 (1, '51.50853,-0.12574', 'Stormwind', 'Alliance Express'),
