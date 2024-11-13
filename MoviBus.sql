@@ -73,7 +73,7 @@ CREATE TABLE Address
 CREATE TABLE PhoneNr
 	(Passanger_ID		INT(10),
 	 PhoneNr			VARCHAR(30),
-	 PRIMARY KEY(Passanger_ID, PhoneNr),
+	 PRIMARY KEY(PhoneNr),
      FOREIGN KEY(Passanger_ID) REFERENCES Passanger(ID) ON DELETE CASCADE
 	);
     
