@@ -51,7 +51,7 @@ CREATE TABLE Serves
      Stop_GPS               VARCHAR(30),
      Line_FinalDestination  VARCHAR(30),
      Line_Name              VARCHAR(30), 
-     PRIMARY KEY(StopNr, Line_Name, Line_FinalDestination),
+     PRIMARY KEY(Line_Name, Line_FinalDestination),
 
      FOREIGN KEY(Stop_GPS) REFERENCES BusStop(StopGPS) ON DELETE CASCADE,
      FOREIGN KEY(Line_FinalDestination, Line_Name) REFERENCES BusLine(FinalDestination, LineName)
