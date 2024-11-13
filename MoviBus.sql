@@ -3,7 +3,7 @@ create database MoviBus;
 use MoviBus;
 
 DROP TABLE IF EXISTS BusStop;
-DROP TABLE IF EXISTS Passanger;
+DROP TABLE IF EXISTS Passenger;
 DROP TABLE IF EXISTS BusLine;
 DROP TABLE IF EXISTS BusRide;
 DROP TABLE IF EXISTS Serves;
@@ -16,7 +16,7 @@ CREATE TABLE BusStop
 	 PRIMARY KEY(StopGPS)
 	);
     
-CREATE TABLE Passanger
+CREATE TABLE Passenger
 	(ID				INT(10), 
 	 Email			VARCHAR(30) NOT NULL, 
 	 FirstName 		VARCHAR(30) NOT NULL,
@@ -36,13 +36,13 @@ CREATE TABLE BusRide
 	 Duration				TIME NOT NULL,
 	 StartGPS				VARCHAR(30) NOT NULL,
 	 EndGPS					VARCHAR(30) NOT NULL,
-	 Passanger_ID			INT(10),
+	 Passenger_ID			INT(10),
 	 Line_FinalDestination	VARCHAR(30),
 	 Line_Name				VARCHAR(30),
-	 PRIMARY KEY(RideDate, StartTime, Passanger_ID),
+	 PRIMARY KEY(RideDate, StartTime, Passenger_ID),
      
      FOREIGN KEY(Line_FinalDestination, Line_Name) REFERENCES BusLine(FinalDestination,LineName) ON DELETE SET NULL,
-	 FOREIGN KEY(Passanger_ID) REFERENCES Passanger(ID) ON DELETE CASCADE
+	 FOREIGN KEY(Passenger_ID) REFERENCES Passenger(ID) ON DELETE CASCADE
 	);
 
 
@@ -59,22 +59,22 @@ CREATE TABLE Serves
 
 
 CREATE TABLE Address
-	(Passanger_ID		INT(10),
+	(Passenger_ID		INT(10),
 	 ZIP				INT(4) NOT NULL,
 	 StreeName			VARCHAR(30) NOT NULL,
 	 CivicNumber		VARCHAR(30) NOT NULL,
 	 City				VARCHAR(30) NOT NULL,
 	 Country			VARCHAR(30) NOT NULL,
-	 PRIMARY KEY(Passanger_ID),
+	 PRIMARY KEY(Passenger_ID),
      
-     FOREIGN KEY(Passanger_ID) REFERENCES Passanger(ID) ON DELETE CASCADE
+     FOREIGN KEY(Passenger_ID) REFERENCES Passenger(ID) ON DELETE CASCADE
 	);
     
 CREATE TABLE PhoneNr
-	(Passanger_ID		INT(10),
+	(Passenger_ID		INT(10),
 	 PhoneNr			VARCHAR(30),
 	 PRIMARY KEY(PhoneNr),
-     FOREIGN KEY(Passanger_ID) REFERENCES Passanger(ID) ON DELETE CASCADE
+     FOREIGN KEY(Passenger_ID) REFERENCES Passenger(ID) ON DELETE CASCADE
 	);
     
     
