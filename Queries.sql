@@ -6,8 +6,8 @@ use MoviBus;
 
 #Show the ID of the passengers who took a ride from the first stop of the line taken.
 
-select passanger_ID from busride inner join serves on serves.Line_FinalDestination = busride.Line_FinalDestination
-where stopnr = 1;
+select Passenger_ID from BusRide inner join Serves on Serves.Line_FinalDestination = BusRide.Line_FinalDestination
+where StopNr = 1;
 
 
 
@@ -68,7 +68,7 @@ BEGIN
 END//
 DELIMITER ;
 
-SELECT LinesServingStops("53.5461,9.9937", "53.5511,9.9937") as LinesServingStops;
+SELECT LinesServingStops("GPS003", "GPS004") as LinesServingStops;
 
 select * from Serves;
 
@@ -100,9 +100,9 @@ BEGIN
 END//
 DELIMITER ;
 
-CALL AddStop('Line A', 'Stormwind', '56.38');
+CALL AddStop('Line A', 'Stormwind', 'GPS007');
 
-CALL AddStop('Line A', 'Stormwind', '53.5631,9.9937');
+CALL AddStop('Line A', 'Stormwind', 'GPS004');
 
 Select * from Serves;
 
@@ -137,18 +137,18 @@ BEGIN
     
 END//
 DELIMITER ;	
--- Dosent work 
+-- Doesn't work 
 INSERT INTO BusRide (RideDate, StartTime, Duration, StartGPS, EndGPS, Passenger_ID, Line_FinalDestination, Line_Name) 
-VALUES ('2024-11-04', '12:00:00', '00:30:00', '53.5461,9.9937', '53.5461,9.9937', 1, 'Stormwind', 'Line A');
+VALUES ('2024-11-04', '12:00:00', '00:30:00', 'GPS001', 'GPS001', 1, 'Stormwind', 'Line A');
 
--- Dosent work 
+-- Doesn't work 
 INSERT INTO BusRide (RideDate, StartTime, Duration, StartGPS, EndGPS, Passenger_ID, Line_FinalDestination, Line_Name) 
-VALUES ('2024-11-04', '12:00:00', '00:30:00', '53.5731,9.9937', '53.5511,9.9937', 1, 'Stormwind', 'Line A');
+VALUES ('2024-11-04', '12:00:00', '00:30:00', 'GPS006', 'GPS002', 1, 'Stormwind', 'Line A');
 
--- Dosent work 
+-- Doesn't work 
 INSERT INTO BusRide (RideDate, StartTime, Duration, StartGPS, EndGPS, Passenger_ID, Line_FinalDestination, Line_Name) 
-VALUES ('2024-11-04', '12:00:00', '00:30:00', '53.5461,9.9937', '53.5731,9.9937', 1, 'Stormwind', 'Line A');
+VALUES ('2024-11-04', '12:00:00', '00:30:00', 'GPS001', 'GPS006', 1, 'Stormwind', 'Line A');
 
 -- Works
 INSERT INTO BusRide (RideDate, StartTime, Duration, StartGPS, EndGPS, Passenger_ID, Line_FinalDestination, Line_Name) 
-VALUES ('2024-11-04', '12:00:00', '00:30:00', '53.5461,9.9937', '53.5511,9.9937', 1, 'Stormwind', 'Line A');
+VALUES ('2024-11-04', '12:00:00', '00:30:00', 'GPS001', 'GPS002', 1, 'Stormwind', 'Line A');
