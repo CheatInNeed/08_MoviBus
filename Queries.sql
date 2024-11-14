@@ -6,8 +6,8 @@ use MoviBus;
 
 #Show the ID of the passengers who took a ride from the first stop of the line taken.
 
-#QUERIE HERE
-
+select passanger_ID from busride inner join serves on serves.Line_FinalDestination = busride.Line_FinalDestination
+where stopnr = 1;
 
 
 
