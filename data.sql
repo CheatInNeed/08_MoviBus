@@ -69,3 +69,17 @@ INSERT INTO PhoneNr (Passenger_ID, PhoneNr) VALUES
 (3, '+1-555-SYLVANAS'),
 (4, '+1-555-ANDUIN'),
 (5, '+1-555-BAINE');
+
+UPDATE BusRide
+SET Passenger_ID = 3
+WHERE RideDate = '2024-11-01';
+
+
+DELETE FROM BusRide
+WHERE RideDate = '2024-11-11';
+
+
+SELECT*
+    FROM BusRide;
+    
+    
