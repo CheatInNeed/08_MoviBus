@@ -6,7 +6,8 @@ INSERT INTO BusStop (StopName, StopGPS) VALUES
 ('Ironforge', '40.71'),
 ('Darnassus', '48.85'),
 ('Thunder Bluff', '35.68'),
-('UnderCity', '57.38');
+('UnderCity', '57.38'),
+('Test', '56.38');
 
 -- Passenger Data
 INSERT INTO Passenger (ID, Email, FirstName, LastName) VALUES
@@ -47,19 +48,19 @@ INSERT INTO BusRide (RideDate, StartTime, Duration, StartGPS, EndGPS, Passenger_
 ('2024-11-11', '08:00:00', '01:30:00', '34.05', '35.68', 1, 'Orgrimmar', 'Horde Express');
 
 -- Serves Data
-INSERT INTO Serves (StopNr, Stop_GPS, Line_FinalDestination, Line_Name) VALUES
-(1, '48.85', 'Stormwind', 'Alliance Express'),
-(2, '40.71', 'Stormwind', 'Alliance Express'),
-(3, '51.50', 'Stormwind', 'Alliance Express'),
-(1, '57.38', 'Orgrimmar', 'Horde Express'),
-(2, '35.68', 'Orgrimmar', 'Horde Express'),
-(3, '34.05', 'Orgrimmar', 'Horde Express'),
-(1, '48.85', 'Orgrimmar', 'Panda Express'),
-(2, '40.71', 'Orgrimmar', 'Panda Express'),
-(3, '51.50', 'Orgrimmar', 'Panda Express'),
-(4, '57.38', 'Orgrimmar', 'Panda Express'),
-(5, '35.68', 'Orgrimmar', 'Panda Express'),
-(6, '34.05', 'Orgrimmar', 'Panda Express');
+INSERT INTO Serves (StopNr, Stop_Name, Line_FinalDestination, Line_Name) VALUES
+(1, 'Darnassus', 'Stormwind', 'Alliance Express'),
+(2, 'Ironforge', 'Stormwind', 'Alliance Express'),
+(3, 'Stormwind', 'Stormwind', 'Alliance Express'),
+(1, 'UnderCity', 'Orgrimmar', 'Horde Express'),
+(2, 'Thunder Bluff', 'Orgrimmar', 'Horde Express'),
+(3, 'Orgrimmar', 'Orgrimmar', 'Horde Express'),
+(1, 'Darnassus', 'Orgrimmar', 'Panda Express'),
+(2, 'Ironforge', 'Orgrimmar', 'Panda Express'),
+(3, 'Stormwind', 'Orgrimmar', 'Panda Express'),
+(4, 'UnderCity', 'Orgrimmar', 'Panda Express'),
+(5, 'Thunder Bluff', 'Orgrimmar', 'Panda Express'),
+(6, 'Orgrimmar', 'Orgrimmar', 'Panda Express');
 
 -- Address Data
 INSERT INTO Address (Passenger_ID, ZIP, StreeName, CivicNumber, City, Country) VALUES

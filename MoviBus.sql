@@ -11,7 +11,7 @@ DROP TABLE IF EXISTS Address;
 DROP TABLE IF EXISTS PhoneNr;
 
 CREATE TABLE BusStop
-	(StopName		VARCHAR(30) NOT NULL,
+	(StopName		VARCHAR(30)NOT NULL,
 	 StopGPS		VARCHAR(30),
 	 PRIMARY KEY(StopGPS)
 	);
@@ -51,9 +51,9 @@ CREATE TABLE Serves
      Stop_GPS               VARCHAR(30),
      Line_FinalDestination  VARCHAR(30),
      Line_Name              VARCHAR(30), 
-     PRIMARY KEY(Line_Name, Line_FinalDestination),
+     PRIMARY KEY(Line_Name, Line_FinalDestination, StopNr),
 
-     FOREIGN KEY(Stop_GPS) REFERENCES BusStop(StopGPS) ON DELETE CASCADE,
+     FOREIGN KEY(Stop_GPS) REFERENCES BusStop(StopGPS) ON DELETE SET NULL,
      FOREIGN KEY(Line_FinalDestination, Line_Name) REFERENCES BusLine(FinalDestination, LineName)
     );
 
