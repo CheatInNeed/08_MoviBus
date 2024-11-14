@@ -25,14 +25,15 @@ GROUP BY Serves.Stop_GPS
 
 #For each line, show the ID of the passenger who took the ride that lasted longer.
 
-#QUERIE HERE
-
-
+select Line_Name, Passenger_ID, Max(Duration) from BusRide
+GROUP BY Line_Name;
 
 
 #Show the ID of the passengers who never took a bus line more than once per day.
 
-#QUERIE HERE
+Select Passenger_ID from BusRide
+GROUP by Passenger_ID
+HAVING count(RideDate) = Count(DISTINCT RideDate, Passenger_ID);
 
 
 
