@@ -6,8 +6,8 @@ use MoviBus;
 
 #Show the ID of the passengers who took a ride from the first stop of the line taken.
 
-#QUERIE HERE
-
+select passanger_ID from busride inner join serves on serves.Line_FinalDestination = busride.Line_FinalDestination
+where stopnr = 1;
 
 
 
@@ -88,9 +88,13 @@ BEGIN
     Stop_GPS = NewStopGPS AND
     Line_FinalDestination = FinalDestination AND
     Line_Name = LineName) THEN
-		SET LastStopNr = (Select Max(StopNr) From Serves WHERE Line_Name = LineName AND Line_FinalDestination = FinalDestination);
+    
+		SET LastStopNr = (Select Max(StopNr) 
+        From Serves 
+        WHERE Line_Name = LineName AND Line_FinalDestination = FinalDestination);
+        
         INSERT INTO Serves (StopNr, Stop_GPS, Line_FinalDestination, Line_Name) 
-			VALUES (LastStopNr + 1, NewStopGPS, FinalDestination, LineName);
+		VALUES (LastStopNr + 1, NewStopGPS, FinalDestination, LineName);
 	END IF;
 END//
 DELIMITER ;
@@ -116,15 +120,15 @@ BEGIN
 		SIGNAL SQLSTATE 'HY000' SET MYSQL_ERRNO = 1525, MESSAGE_TEXT = 'Invalid Start/Stop';
 	END IF;
     
-    IF NOT EXISTS (SELECT * FROM Serves where
-    Stop_GPS = New.StartGPS AND
+    IF NOT EXISTS (SELECT * FROM Serves 
+    where Stop_GPS = New.StartGPS AND
     Line_FinalDestination = NEW.Line_FinalDestination AND
     Line_Name = NEW.Line_Name) THEN
     		SIGNAL SQLSTATE 'HY000' SET MYSQL_ERRNO = 1525, MESSAGE_TEXT = 'Stop is not served by that line';
     END IF;
     
-    IF NOT EXISTS (SELECT * FROM Serves where
-    Stop_GPS = New.EndGPS AND
+    IF NOT EXISTS (SELECT * FROM Serves 
+    where Stop_GPS = New.EndGPS AND
     Line_FinalDestination = NEW.Line_FinalDestination AND
     Line_Name = NEW.Line_Name) THEN
     		SIGNAL SQLSTATE 'HY000' SET MYSQL_ERRNO = 1525, MESSAGE_TEXT = 'Stop is not served by that line';
